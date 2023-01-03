@@ -21,7 +21,7 @@ export default function Signin({
   return (
     <>
       <Head>
-        <title>KETUK - Sign In</title>
+        <title>KETUK - Sign In </title>
       </Head>
       <Header />
       <div className="mt-40">
