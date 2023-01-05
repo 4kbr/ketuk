@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function User() {
@@ -8,7 +9,7 @@ export default function User() {
     return (
       <>
         <img
-          className="h-10 h-10 rounded-full hover:bg-gray-100 cursor-pointer p-1"
+          className="w-10 h-10 rounded-full hover:bg-gray-100 cursor-pointer p-1"
           src={session.user!.image!}
           alt={"KETUK USER - " + session.user?.name}
         />
