@@ -38,3 +38,6 @@ next-env.d.ts
 laptop-note
 *.env
 /.vscode
+yarn.lock
+package-lock.json
+*lock
