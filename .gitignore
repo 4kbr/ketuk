@@ -40,4 +40,4 @@ laptop-note
 /.vscode
 yarn.lock
 package-lock.json
-*lock
+*.lock
