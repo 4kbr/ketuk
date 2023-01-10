@@ -1,10 +1,23 @@
+import { MicrophoneIcon, SearchIcon } from "@heroicons/react/solid";
 import Head from "next/head";
 import Image from "next/image";
-import Header from "../components/Header";
-import { MicrophoneIcon, SearchIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
+import React from "react";
+import { useRef } from "react";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
-const home = () => {
+const Home = () => {
+  const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  function search(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault();
+    const term = searchInputRef.current?.value;
+    console.log("term is " + term);
+    // alert("term is " + term);
+    if (!term?.trim()) return;
+    router.push(`/search?term=${term}`);
+  }
   return (
     <div>
       <Head>
@@ -33,11 +46,15 @@ const home = () => {
         "
         >
           <SearchIcon className="h-5 text-gray-500 mr-4 cursor-pointer" />
-          <input type="text" className="flex-grow focus:outline-none" />
+          <input
+            type="text"
+            ref={searchInputRef}
+            className="flex-grow focus:outline-none"
+          />
           <MicrophoneIcon className="h-5 cursor-pointer" />
         </div>
         <div className="flex flex-col sm:flex-row w-[50%] space-y-2 mt-8 sm:space-y-0 sm:space-x-4 justify-center">
-          <button onClick={(e) => e.preventDefault()} className="btn">
+          <button onClick={search} className="btn">
             Google Search
           </button>
           <button onClick={(e) => e.preventDefault()} className="btn">
@@ -54,4 +71,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
