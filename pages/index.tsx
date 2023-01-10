@@ -2,14 +2,20 @@ import { MicrophoneIcon, SearchIcon } from "@heroicons/react/solid";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const Home = () => {
   const router = useRouter();
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  /**
+   *
+   * @param event
+   * @returns
+   * this function use for handle clicked google search
+   */
   function search(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     const term = searchInputRef.current?.value;
@@ -18,6 +24,25 @@ const Home = () => {
     if (!term?.trim()) return;
     router.push(`/search?term=${term}`);
   }
+
+  /**
+   *
+   * @param event
+   * @returns
+   * this function use for handle enter in search input
+   */
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    // if (event.key === "Enter") {
+    //   const term = searchInputRef.current?.value;
+    //   console.log("term is " + term);
+    //   // alert("term is " + term);
+    //   if (!term?.trim()) return;
+    //   router.push(`/search?term=${term}`);
+    // }else{
+
+    // }
+  };
   return (
     <div>
       <Head>
@@ -37,7 +62,7 @@ const Home = () => {
           objectFit="cover"
           height="100"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"
-          alt={"google image for ketuk"}
+          alt={"Kenook - Search Engine"}
         />
         <div
           className="flex w-full mt-5 mx-auto max-w-[90%] border border-gray-200 hover:shadow-lg focus-within:shadow-lg
