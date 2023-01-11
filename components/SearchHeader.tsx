@@ -27,12 +27,16 @@ export default function SearchHeader() {
             type="text"
             defaultValue={router.query.term}
             ref={searchInputRef}
+            className="w-full focus:outline-none"
           />
-          <XIcon className="h-7" />
-          <MicrophoneIcon className="h-6" />
-          <SearchIcon className="h-6" />
+          <XIcon
+            className="h-7 cursor-pointer sm:mr-3 text-gray-500"
+            onClick={() => (searchInputRef.current!.value = "")}
+          />
+          <MicrophoneIcon className="h-6 hidden sm:inline-flex text-blue-400 pl-4 border-l-2 border-gray-200 mr-3" />
+          <SearchIcon className="h-6 hidden sm:inline-flex text-blue-400" />
         </form>
-        <User className="ml-auto" />
+        <User className="ml-auto whitespace-nowrap" />
       </div>
     </header>
   );
