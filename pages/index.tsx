@@ -22,27 +22,9 @@ const Home = () => {
     console.log("term is " + term);
     // alert("term is " + term);
     if (!term?.trim()) return;
-    router.push(`/search?term=${term}`);
+    router.push(`/search?term=${term.trim()}`);
   }
 
-  /**
-   *
-   * @param event
-   * @returns
-   * this function use for handle enter in search input
-   */
-  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    // if (event.key === "Enter") {
-    //   const term = searchInputRef.current?.value;
-    //   console.log("term is " + term);
-    //   // alert("term is " + term);
-    //   if (!term?.trim()) return;
-    //   router.push(`/search?term=${term}`);
-    // }else{
-
-    // }
-  };
   return (
     <div>
       <Head>

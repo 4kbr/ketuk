@@ -10,6 +10,14 @@ export default function SearchHeader() {
   const handleImageClick = () => {
     router.push("/");
   };
+  const handleSearch = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    event.preventDefault();
+    const term = searchInputRef.current?.value;
+    if (!term?.trim()) return;
+    router.push(`/search?term=${term.trim()}`);
+  };
   return (
     <header className="sticky top-0 bg-white">
       <div className="flex w-full p-6 items-center">
@@ -35,6 +43,7 @@ export default function SearchHeader() {
           />
           <MicrophoneIcon className="h-6 hidden sm:inline-flex text-blue-400 pl-4 border-l-2 border-gray-200 mr-3" />
           <SearchIcon className="h-6 hidden sm:inline-flex text-blue-400" />
+          <button onClick={handleSearch} type="submit" hidden></button>
         </form>
         <User className="ml-auto whitespace-nowrap" />
       </div>
