@@ -2,6 +2,7 @@ import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useRef } from "react";
+import SearchHeaderOptions from "./SearchHeaderOptions";
 import User from "./User";
 
 export default function SearchHeader() {
@@ -16,7 +17,7 @@ export default function SearchHeader() {
     event.preventDefault();
     const term = searchInputRef.current?.value;
     if (!term?.trim()) return;
-    router.push(`/search?term=${term.trim()}`);
+    router.push(`/search?term=${term.trim()}&searchType=`);
   };
   return (
     <header className="sticky top-0 bg-white">
@@ -47,6 +48,7 @@ export default function SearchHeader() {
         </form>
         <User className="ml-auto whitespace-nowrap" />
       </div>
+      <SearchHeaderOptions />
     </header>
   );
 }
