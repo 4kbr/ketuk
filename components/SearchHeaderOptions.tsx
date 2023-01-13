@@ -9,10 +9,12 @@ export default function SearchHeaderOptions() {
       <SearchOption
         title={"All"}
         Icon={SearchIcon}
+        value={""}
         selected={router.query.searchType === "" || !router.query.searchType}
       />
       <SearchOption
         title={"Images"}
+        value={"image"}
         Icon={PhotographIcon}
         selected={router.query.searchType === "image"}
       />
