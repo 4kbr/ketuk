@@ -29,7 +29,7 @@ export default function Search({ results }: { results: Object }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const mockData = true;
+  const mockData = false;
   const data = mockData
     ? DummyResponse
     : await fetch(

@@ -1,4 +1,5 @@
 import Parser from "html-react-parser";
+import PaginationButton from "./PaginationButton";
 export default function SearchResults({ result: results }: { result: any }) {
   console.log(results);
 
@@ -26,6 +27,7 @@ export default function SearchResults({ result: results }: { result: any }) {
           </div>
         </div>
       ))}
+      <PaginationButton />
     </div>
   );
 }
