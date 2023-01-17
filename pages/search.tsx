@@ -29,6 +29,7 @@ export default function Search({ results }: { results: Object }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const startIndex = context.query.start || "1";
   const mockData = false;
   const data = mockData
     ? DummyResponse
@@ -37,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           process.env.CONTEXT_KEY
         }&q=${context.query.term}${
           context.query.searchType && "&searchType=image"
-        }`
+        }&start=${startIndex}`
       ).then((response) => response.json());
 
   return {
@@ -46,12 +47,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-
-// export interface SearchModel {
-//   context: object;
-//   items: [];
-//   kind: string;
-//   queries: object;
-//   searchInformation: object;
-//   url: object;
-// }
