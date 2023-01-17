@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import React, { useRef } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { ConstantVar } from "../constant/ConstantVar";
 
 const Home = () => {
   const router = useRouter();
@@ -23,6 +24,18 @@ const Home = () => {
     // alert("term is " + term);
     if (!term?.trim()) return;
     router.push(`/search?term=${term.trim()}&searchType=`);
+  }
+
+  async function randomSearch(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    event.preventDefault();
+    const randomWord: string = await fetch(
+      `${ConstantVar.random}?number=1`
+    ).then((response) => response.json());
+    console.log({ randomWord });
+    if (!randomWord) return;
+    router.push(`/search?term=${randomWord}&searchType=`);
   }
 
   return (
@@ -64,7 +77,7 @@ const Home = () => {
           <button onClick={search} className="btn">
             Google Search
           </button>
-          <button onClick={(e) => e.preventDefault()} className="btn">
+          <button onClick={randomSearch} className="btn">
             I&apos;m Feeling Lucky
           </button>
         </div>
