@@ -16,8 +16,9 @@ export default function SearchHeader() {
   ): void => {
     event.preventDefault();
     const term = searchInputRef.current?.value;
+    const searchType = router.query.searchType;
     if (!term?.trim()) return;
-    router.push(`/search?term=${term.trim()}&searchType=`);
+    router.push(`/search?term=${term.trim()}&searchType=${searchType}`);
   };
   return (
     <header className="sticky top-0 bg-white">

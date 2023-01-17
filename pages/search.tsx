@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import ImageResults from "../components/ImageResults";
 import SearchHeader from "../components/SearchHeader";
 import SearchResults from "../components/SearchResults";
 import { ConstantVar } from "../constant/ConstantVar";
@@ -21,8 +22,12 @@ export default function Search({ results }: { results: Object }) {
       <SearchHeader />
       {/* Search Header - CLOSE */}
 
-      {/* Search Result */}
-      <SearchResults result={results} />
+      {/* Search all and images Result */}
+      {router.query.searchType === "image" ? (
+        <ImageResults result={results} />
+      ) : (
+        <SearchResults result={results} />
+      )}
       {/* Search Result - CLOSE */}
     </div>
   );
